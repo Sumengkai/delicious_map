@@ -21,6 +21,7 @@ public class Menu_impl implements Menu_face {
 	private Menudao menudao;
 	@Autowired
 	private StoreDao storeDao;
+	
 
 	// ==¼W¥[.­×§ï
 	public MenuMenu add(String name1, String name2, String name3, int name4, int name5) {
