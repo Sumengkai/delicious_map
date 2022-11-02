@@ -48,6 +48,7 @@ public class MenuMenu {
 
 	public int getPrice() {
 		return price;
+		
 	}
 
 	public void setPrice(int price) {
