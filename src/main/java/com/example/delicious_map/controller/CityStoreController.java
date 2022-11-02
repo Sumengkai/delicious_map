@@ -17,6 +17,7 @@ import com.example.delicious_map.vo.StoreRes;
 public class CityStoreController {
 	@Autowired
 	private Store_impl store_face;
+	
 
 	// ==1.
 	@PostMapping(value = "/api/store1")
