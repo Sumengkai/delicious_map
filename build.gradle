@@ -18,6 +18,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.4'
 	//mysql cpnnector      <v>
 	implementation 'mysql:mysql-connector-java:8.0.31'
+	//swagger api <v>
+	implementation 'io.springfox:springfox-swagger2:2.9.2'
+	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

@@ -1,11 +1,10 @@
 package com.example.delicious_map.vo;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+
 
 import com.example.delicious_map.entity.Food;
-import com.example.delicious_map.entity.Store;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
