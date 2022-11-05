@@ -58,7 +58,7 @@ public class StoreFood_impl implements StoreFood_face {
 		String chick = "\\d.\\d"; // 檢查是否符合規格
 		String pointstr = String.valueOf(point);// 將double轉成字串
 		boolean chickpoint = pointstr.matches(chick);// 並且確認並且回傳是否
-		if (!StringUtils.hasText(store) || !StringUtils.hasText(food) || price < 0 || !chickpoint || point > 5
+		if (!StringUtils.hasText(store) || !StringUtils.hasText(food) || price <= 0 || !chickpoint || point > 5
 				|| point < 1) {
 			return null;
 		}
@@ -146,9 +146,9 @@ public class StoreFood_impl implements StoreFood_face {
 			List<Food> foodlist = foodDao.findByStoreId(storefor.getStoreId());
 			for (var foodfor : foodlist) {
 				if (storefor.getStoreId().equals(foodfor.getStoreid())) {
-					reslist.add("店家 :" + storefor.getStoreId() + "城市 :" + storefor.getCity() + "店家評價 :"
-							+ storefor.getPoint() + "本店餐點" + foodfor.getFoodid() + "價格 :" + foodfor.getFoodprice()
-							+ "餐點評價 :" + foodfor.getFoodpoint());
+					reslist.add(" 店家 : " + storefor.getStoreId() + " 城市 : " + storefor.getCity() + " 店家評價 : "
+							+ storefor.getPoint() + " 本店餐點 " + foodfor.getFoodid() + " 價格 : " + foodfor.getFoodprice()
+							+ " 餐點評價 : " + foodfor.getFoodpoint());
 				}
 			}
 		}
@@ -163,12 +163,12 @@ public class StoreFood_impl implements StoreFood_face {
 		List<Food> foodlist = foodDao.findByFoodpointGreaterThanEqualOrderByFoodpointDesc(foodpoint);
 		List<String> storename = new ArrayList<>();
 		for (var storefor : storelist) {// 掃店家,每家店只會掃一次
-			storename.add("=============以下是符合要求的店家以及菜單");
+			storename.add("-------------------------------------------以下是符合要求的店家以及菜單");
 			storename.add(// 掃一次後加進來
 					"店家 : " + storefor.getStoreId() + " 城市 : " + storefor.getCity() + " 店評 : " + storefor.getPoint());
 			for (var foodfor : foodlist) {// 比對完每個菜單是否符合判斷
 				if (storefor.getStoreId().equals(foodfor.getStoreid())) {
-					List<String> foodname = new ArrayList<>();// 這裡必須要用新的空間,不符合店名的資料
+					List<String> foodname = new ArrayList<>();// 這裡必須要用新的空間,不然會放進不符合店名的資料
 					foodname.add("店家美食 : " + foodfor.getFoodid() + " 餐點價格 : " + foodfor.getFoodprice() + " 菜評 : "
 							+ foodfor.getFoodpoint());
 					storename.addAll(foodname); // 每比對完一次,放進去第一個店名的list

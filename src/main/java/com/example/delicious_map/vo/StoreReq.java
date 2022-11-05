@@ -7,15 +7,15 @@ public class StoreReq {
 	public String store_id; //KEY ノㄓтStoreId and foodid 
 	@JsonProperty("city")
 	public String city;   //тStoreCity
-	@JsonProperty("food")
+	@JsonProperty("food")//ss
 	public String food; //тfood繺翴珇兜
 	@JsonProperty("price")
 	public int price; //тfood基
-	@JsonProperty("foodpoint")
+	@JsonProperty("foodpoint")//ss
 	public double foodpoint;//тfoodだ计  // api 5
 	@JsonProperty("searchnumber")
 	public int searchnumber;//砞﹚琩高戈掸计 // api 3
-	@JsonProperty("searchpoint")
+	@JsonProperty("searchpoint")//ss
 	public double searchpoint;//ノだ计тStore戈 // api 4 蛤 5
 	public String getStore_id() {
 		return store_id;
@@ -41,6 +41,7 @@ public class StoreReq {
 		this.food = food;
 	}
 
+	
 	public int getPrice() {
 		return price;
 	}

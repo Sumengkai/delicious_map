@@ -2,7 +2,6 @@ package com.example.delicious_map.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,7 +42,7 @@ public class StoreFoodController {
 		if (food == null) {
 			if (!StringUtils.hasText(req.getStore_id()) || !StringUtils.hasText(req.getFood())) {
 				return new StoreRes(null, StoreFood_RtnCode.CANT_FIND_Key.getMessage());
-			} else if (req.getPrice() < 0) {
+			} else if (req.getPrice() <= 0) {
 				return new StoreRes(null, StoreFood_RtnCode.CANT_FIND_price.getMessage());
 			} else if (req.getFoodpoint() < 1 || req.getFoodpoint() > 5) {
 				return new StoreRes(null, StoreFood_RtnCode.CANT_FIND_point.getMessage());
@@ -51,12 +50,6 @@ public class StoreFoodController {
 				return new StoreRes(null, StoreFood_RtnCode.CANT_FIND_Regulation.getMessage());
 			}
 		}
-		// -----
-//		res.setStore_id(req.getStore_id());
-//		res.setFood(req.getFood());
-//		res.setPrice(req.getPrice());
-//		res.setPoint(req.getFoodpoint());
-		// -----
 		return new StoreRes(food, StoreFood_RtnCode.SUCCESSFUL.getMessage());
 
 	}
@@ -72,29 +65,30 @@ public class StoreFoodController {
 		res.setList(list);
 		return res;
 	}
+
 	// --------4.
 	@PostMapping(value = "/api/StoreFood4")
 	public StoreRes SearchByStorePoint(@RequestBody StoreReq req) {
 		StoreRes res = new StoreRes();
 		List<String> reslist = storeFood_face.SearchStorePoint(req.getSearchpoint());
-		if(reslist.size()==0) {
+		if (req.getSearchpoint()<1) {
 			return new StoreRes(null, StoreFood_RtnCode.CANT_FIND_POINTLIST.getMessage());
 		}
 		res.setList(reslist);
 		return res;
 	}
+
 	// --------5.
 	@PostMapping(value = "/api/StoreFood5")
 	public StoreRes SearchByStorepointAndFoodpoint(@RequestBody StoreReq req) {
 		StoreRes res = new StoreRes();
-		List<String> reslist =storeFood_face.SearchStorePointAndFoodPoint(req.getSearchpoint(), req.getFoodpoint());
-		if(reslist.size()==0) {
+		List<String> reslist = storeFood_face.SearchStorePointAndFoodPoint(req.getSearchpoint(), req.getFoodpoint());
+		if (req.getSearchpoint()<1|| req.getFoodpoint()<1) {
 			return new StoreRes(null, StoreFood_RtnCode.CANT_FIND_POINTLIST.getMessage());
 		}
 		res.setList(reslist);
 		return res;
-		
+
 	}
-	
 
 }

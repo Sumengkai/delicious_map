@@ -14,7 +14,7 @@ public class Store {
 	@Column(name = "city")
 	private String city;
 	@Column(name = "storepoint")
-	private double point=0;
+	private double point=1;
 
 	// -----------------
 	public Store() {
