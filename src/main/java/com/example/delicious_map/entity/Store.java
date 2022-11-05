@@ -10,27 +10,43 @@ import javax.persistence.Table;
 public class Store {
 	@Id
 	@Column(name = "store_id")
-	private String store_id;
+	private String storeId;
 	@Column(name = "city")
 	private String city;
-	//==
-	public Store() {}
-	public Store(String store,String city) {
+	@Column(name = "storepoint")
+	private double point=0;
+
+	// -----------------
+	public Store() {
+	}
+	public Store(String storeId,String city,double point) {
+		this.storeId=storeId;
 		this.city=city;
-		this.store_id=store;
+		this.point=point;
 	}
-	public String getStore_id() {
-		return store_id;
+
+	public String getStoreId() {
+		return storeId;
 	}
-	public void setStore_id(String store_id) {
-		this.store_id = store_id;
+
+	public void setStoreId(String storeId) {
+		this.storeId = storeId;
 	}
+
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
-	
+
+	public double getPoint() {
+		return point;
+	}
+
+	public void setPoint(double point) {
+		this.point = point;
+	}
+
 }
