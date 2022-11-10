@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @SuppressWarnings("serial")
-public class Food_id implements Serializable {
+public class FoodId implements Serializable {
 	private String storeId;
 	private String foodId;
 
-	public Food_id() {
+	public FoodId() {
 	}
 
-	public Food_id(String storeid, String foodid) {
+	public FoodId(String storeid, String foodid) {
 		this.foodId = foodid;
 		this.storeId = storeid;
 	}

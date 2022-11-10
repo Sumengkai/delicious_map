@@ -8,15 +8,15 @@ import java.util.UUID;
 import com.example.delicious_map.entity.Food;
 import com.example.delicious_map.entity.Store;
 
-public interface StoreFood_face {
+public interface StoreFood {
 	//------------------------------------------------------1
 	// 針對store新增.修改
-	public Store AddAndUpStore(String id, String city);
+	public Store AddAndUpdateStore(String id, String city);
 
 //------------------------------------------------------2
 
 	// food新增修改並且存進store的評價
-	public Food AddAndUpFood(String store, String food, int price, double point);
+	public Food AddAndUpdateFood(String store, String food, int price, double point);
 
 //------------------------------------------------------3
 	// 藉由城市找出店家以及相對應的餐點... 搜尋筆數

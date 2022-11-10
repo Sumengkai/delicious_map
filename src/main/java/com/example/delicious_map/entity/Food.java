@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "food")
-@IdClass(value=Food_id.class)
+@IdClass(value=FoodId.class)
 public class Food {
 	@Id
 	@Column(name = "store_id")
