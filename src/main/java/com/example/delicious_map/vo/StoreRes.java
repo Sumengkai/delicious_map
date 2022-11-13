@@ -4,7 +4,7 @@ import java.util.List;
 
 
 import com.example.delicious_map.entity.Food;
-
+import com.example.delicious_map.entity.Store;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class StoreRes {
 	@JsonProperty("StoreFood_info")
 	public Food foodentity;
+	public Store store;
 	public String store_id;
 	public String city;
 	public String food;
@@ -25,6 +26,10 @@ public class StoreRes {
 
 	public StoreRes() {
 	}
+//	public StoreRes(Store store,String message) {
+//		this.store = store;
+//		this.message = message;
+//	}
 
 	public StoreRes(Food foodentity, String message) {
 		this.foodentity = foodentity;
@@ -95,6 +100,14 @@ public class StoreRes {
 		this.list = list;
 	}
 
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
+	}
+	
 
 	
 

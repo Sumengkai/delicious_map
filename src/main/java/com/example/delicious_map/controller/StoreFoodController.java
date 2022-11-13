@@ -23,14 +23,7 @@ public class StoreFoodController {
 	// --------1.
 	@PostMapping(value = "/api/StoreFood1")
 	public StoreRes AddAndUpdateStore(@RequestBody StoreReq req) {
-		StoreRes res = new StoreRes();
-		Store sto = storeFood_face.AddAndUpdateStore(req.getStore_id(), req.getCity());
-		if (sto == null) {
-			res.setStore_id(StoreFood_RtnCode.CANT_FIND_STORE.getMessage());
-			return res; // ³o¸Ì¥iÂ²¼g
-		}
-		res.setStore_id(req.getStore_id());
-		res.setCity(req.getCity());
+		StoreRes res =storeFood_face.AddAndUpdateStore(req.getStore_id(), req.getCity());
 		return res;
 	}
 

@@ -7,11 +7,12 @@ import java.util.UUID;
 
 import com.example.delicious_map.entity.Food;
 import com.example.delicious_map.entity.Store;
+import com.example.delicious_map.vo.StoreRes;
 
 public interface StoreFood {
 	//------------------------------------------------------1
 	// 針對store新增.修改
-	public Store AddAndUpdateStore(String id, String city);
+	public StoreRes AddAndUpdateStore(String id, String city);
 
 //------------------------------------------------------2
 

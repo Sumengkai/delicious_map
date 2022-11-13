@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.example.delicious_map.Constances.StoreFood_RtnCode;
 import com.example.delicious_map.entity.Food;
 import com.example.delicious_map.entity.FoodId;
 import com.example.delicious_map.entity.Store;
 import com.example.delicious_map.repository.FoodDao;
 import com.example.delicious_map.repository.StoreDao;
 import com.example.delicious_map.service.face.StoreFood;
+import com.example.delicious_map.vo.StoreRes;
 
 @Service
 public class StoreFoodImpl implements StoreFood {
@@ -23,35 +25,34 @@ public class StoreFoodImpl implements StoreFood {
 	@Autowired
 	private FoodDao foodDao;
 
-	// =========1.新增和修改Store<修改時會順便改分數,不會被覆蓋> API 1
+	// =========1.新增和修改Store API 1
 	@Override
-	public Store AddAndUpdateStore(String store, String city) {
+	public StoreRes AddAndUpdateStore(String store, String city) {
 		Store stor = new Store();
+		StoreRes res = new StoreRes();
 		if (!StringUtils.hasText(store) || !StringUtils.hasText(city)) {
-			return null;
+			return new StoreRes(null,StoreFood_RtnCode.CANT_FIND_STORE.getMessage());
 		}
 		Optional<Store> storeop = storeDao.findById(store);
 		if (!storeop.isPresent()) { // 新增
 			stor.setStoreId(store);
 			stor.setCity(city);
-		} else { // 修改
+			res.setStore(stor);
+			res.setMessage("新增成功");
+		} else { // 修改;
 			stor = storeop.get();
 			stor.setCity(city);
+			res.setStore(stor);
+			res.setMessage("修改成功");
 		}
 		storeDao.save(stor);
-		return stor;
+		return res;
 	}
 
 	// =========2.新增和修改food並且存到store的評價=========================== API 2
 	@Override
 	public Food AddAndUpdateFood(String store, String food, int price, double point) {
 		Food foodvehicle = new Food();
-		String pointstr = String.valueOf(point);// 將double轉成字串
-		// --------------
-
-		// --------------
-		String pointSubs = pointstr.substring(0, 3);
-		double saveFoodPoint = Double.valueOf(pointSubs);
 		if (!StringUtils.hasText(store) || !StringUtils.hasText(food) || price <= 0 || point > 5 || point < 1) {
 			return null;
 		}
@@ -139,7 +140,7 @@ public class StoreFoodImpl implements StoreFood {
 			storename.add("-------------------------------------------以下是符合要求的店家以及菜單");
 			storename.add(// 掃一次後加進來
 					"店家 : " + storefor.getStoreId() + " 城市 : " + storefor.getCity() + " 店評 : " + storefor.getPoint());
-			List<Food> foodlist = foodDao.findByStoreIdOrderByFoodpointDesc(storefor.getStoreId()); //撈資料的同時比對店家
+			List<Food> foodlist = foodDao.findByStoreIdOrderByFoodpointDesc(storefor.getStoreId()); // 撈資料的同時比對店家
 			for (var foodfor : foodlist) {// 比對完每個菜單是否符合判斷
 //*				if (storefor.getStoreId().equals(foodfor.getStoreid())) {
 				if (foodfor.getFoodpoint() >= foodpoint) {
