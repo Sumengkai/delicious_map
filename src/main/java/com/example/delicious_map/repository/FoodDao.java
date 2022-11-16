@@ -13,9 +13,10 @@ import com.example.delicious_map.entity.Store;
 
 @Repository
 public interface FoodDao extends JpaRepository<Food,FoodId>{
-	public List<Food> findByStoreId(String store);
+	public List<Food> findByStoreId(String store); //api 2
 	public List<Food> findByFoodpointGreaterThanEqualOrderByFoodpointDesc(double foodpoint);//5 api
 	//----------------
 	public List<Food> findByStoreIdOrderByFoodpointDesc(String store); //5 api
 	//-------------
+	public List<Food> findByStoreIdInOrderByFoodpointDesc(List<String> list); //5 api
 }

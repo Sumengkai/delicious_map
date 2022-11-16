@@ -18,66 +18,54 @@ import com.example.delicious_map.vo.StoreRes;
 @RestController
 public class StoreFoodController {
 	@Autowired
-	private StoreFood storeFood_face;
+	private StoreFood storeFood;
 
-	// --------1.
-	@PostMapping(value = "/api/StoreFood1")
-	public StoreRes AddAndUpdateStore(@RequestBody StoreReq req) {
-		StoreRes res =storeFood_face.AddAndUpdateStore(req.getStore_id(), req.getCity());
-		return res;
+	// -------------------------------------------------------------1.
+	@PostMapping(value = "/api/addAndUpdateStore")
+	public StoreRes addAndUpdateStore(@RequestBody StoreReq req) {
+		return storeFood.addAndUpdateStore(req.getStore_id(), req.getCity());
 	}
 
-	// --------2.
-	@PostMapping(value = "/api/StoreFood2")
-	public StoreRes AddAndUpdateFood(@RequestBody StoreReq req) {
-		StoreRes res = new StoreRes();
-		Food food = storeFood_face.AddAndUpdateFood(req.getStore_id(), req.getFood(), req.getPrice(), req.getFoodpoint());
-		if (food == null) {
-			if (!StringUtils.hasText(req.getStore_id()) || !StringUtils.hasText(req.getFood())) {
-				return new StoreRes(null, StoreFood_RtnCode.CANT_FIND_Key.getMessage());
-			} else if (req.getPrice() <= 0) {
-				return new StoreRes(null, StoreFood_RtnCode.CANT_FIND_price.getMessage());
-			} else if (req.getFoodpoint() < 1 || req.getFoodpoint() > 5) {
-				return new StoreRes(null, StoreFood_RtnCode.CANT_FIND_point.getMessage());
-			} else {
-				return new StoreRes(null, StoreFood_RtnCode.CANT_FIND_Regulation.getMessage());
-			}
-		}
-		return new StoreRes(food, StoreFood_RtnCode.SUCCESSFUL.getMessage());
-
+	// -------------------------------------------------------------2.
+	@PostMapping(value = "/api/addAndUpdateFood")
+	public StoreRes addAndUpdateFood(@RequestBody StoreReq req) {
+		return storeFood.addAndUpdateFood(req.getStore_id(), req.getFood(), req.getPrice(), req.getFoodpoint());
 	}
 
-	// --------3.
-	@PostMapping(value = "/api/StoreFood3")
-	public StoreRes SearchByCityList(@RequestBody StoreReq req) {
+	//--------------------------------------------------------------3.
+	@PostMapping(value = "/api/searchByCityAndLimit")
+	public StoreRes searchByCityAndLimit(@RequestBody StoreReq req) {
 		StoreRes res = new StoreRes();
-		List<String> list = storeFood_face.SearchByCity(req.getCity(), req.getSearchnumber());
+		List<String> list = storeFood.searchByCityAndLimit(req.getCity(), req.getSearchnumber());
 		if (list == null) {
-			return new StoreRes(null, StoreFood_RtnCode.CANT_FIND_LIST.getMessage());
+			res.setMessage(StoreFood_RtnCode.CANT_FIND_CITYLIST.getCode(),StoreFood_RtnCode.CANT_FIND_CITYLIST.getMessage());
+			return res;
 		}
 		res.setList(list);
 		return res;
 	}
 
-	// --------4.
-	@PostMapping(value = "/api/StoreFood4")
-	public StoreRes SearchByStorePoint(@RequestBody StoreReq req) {
+	//--------------------------------------------------------------4.
+	@PostMapping(value = "/api/searchStorePoint")
+	public StoreRes searchStorePoint(@RequestBody StoreReq req) {
 		StoreRes res = new StoreRes();
-		List<String> reslist = storeFood_face.SearchStorePoint(req.getSearchpoint());
-		if (req.getSearchpoint()<1||req.getSearchpoint()>=6) {
-			return new StoreRes(null, StoreFood_RtnCode.CANT_FIND_POINTLIST.getMessage());
+		List<String> reslist = storeFood.searchStorePoint(req.getSearchpoint());
+		if (reslist==null) {
+			res.setMessage(StoreFood_RtnCode.CANT_FIND_POINTLIST.getCode(),StoreFood_RtnCode.CANT_FIND_POINTLIST.getMessage());
+			return res;
 		}
 		res.setList(reslist);
 		return res;
 	}
 
-	// --------5.
-	@PostMapping(value = "/api/StoreFood5")
-	public StoreRes SearchByStorepointAndFoodpoint(@RequestBody StoreReq req) {
+	//--------------------------------------------------------------5.
+	@PostMapping(value = "/api/searchStorePointAndFoodPoint")
+	public StoreRes searchStorePointAndFoodPoint(@RequestBody StoreReq req) {
 		StoreRes res = new StoreRes();
-		List<String> reslist = storeFood_face.SearchStorePointAndFoodPoint(req.getSearchpoint(), req.getFoodpoint());
-		if (req.getSearchpoint()>=6||req.getSearchpoint()<1|| req.getFoodpoint()<1||req.getFoodpoint()>=6) {
-			return new StoreRes(null, StoreFood_RtnCode.CANT_FIND_POINTLIST.getMessage());
+		List<String> reslist = storeFood.searchStorePointAndFoodPoint(req.getSearchpoint(), req.getFoodpoint());
+		if (reslist==null) {
+			res.setMessage(StoreFood_RtnCode.CANT_FIND_POINTLIST.getMessage(),StoreFood_RtnCode.CANT_FIND_POINTLIST.getMessage());
+			return res;
 		}
 		res.setList(reslist);
 		return res;

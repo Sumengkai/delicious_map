@@ -8,32 +8,30 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "food")
-@IdClass(value=FoodId.class)
+@IdClass(value = FoodId.class)
 public class Food {
 	@Id
 	@Column(name = "store_id")
 	private String storeId;
+
 	@Id
 	@Column(name = "food_id")
 	private String foodId;
+
 	@Column(name = "foodprice")
 	private int foodprice;
+
 	@Column(name = "foodpoint")
 	private double foodpoint;
 
 	public Food() {
 	}
 
-	public Food(String storeId, String foodId) {
-		this.storeId=storeId;
-		this.foodId=foodId;
-	}
-
 	public Food(String storeId, String foodId, int foodprice, double foodpoint) {
-		this.storeId=storeId;
-		this.foodId=foodId;
-		this.foodpoint=foodpoint;
-		this.foodprice=foodprice;
+		this.storeId = storeId;
+		this.foodId = foodId;
+		this.foodpoint = foodpoint;
+		this.foodprice = foodprice;
 	}
 
 	public String getStoreid() {

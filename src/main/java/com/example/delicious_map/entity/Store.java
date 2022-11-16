@@ -11,18 +11,21 @@ public class Store {
 	@Id
 	@Column(name = "store_id")
 	private String storeId;
+
 	@Column(name = "city")
 	private String city;
+
 	@Column(name = "storepoint")
-	private double point=1;
+	private double point = 1;
 
 	// -----------------
 	public Store() {
 	}
-	public Store(String storeId,String city,double point) {
-		this.storeId=storeId;
-		this.city=city;
-		this.point=point;
+
+	public Store(String storeId, String city, double point) {
+		this.storeId = storeId;
+		this.city = city;
+		this.point = point;
 	}
 
 	public String getStoreId() {

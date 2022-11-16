@@ -4,19 +4,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class StoreReq {
 	@JsonProperty("store")
-	public String store_id; //KEY ノㄓтStoreId and foodid 
+	private String store_id; // KEY ノㄓтStoreId 
 	@JsonProperty("city")
-	public String city;   //тStoreCity
-	@JsonProperty("food")//ss
-	public String food; //тfood繺翴珇兜
+	private String city; // тStoreCity
+	@JsonProperty("food")
+	private String food; // тfood繺翴珇兜
 	@JsonProperty("price")
-	public int price; //тfood基
-	@JsonProperty("foodpoint")//ss
-	public double foodpoint;//тfoodだ计  // api 5
+	private Integer price; // тfood基
+	@JsonProperty("foodpoint")
+	private double foodpoint; // тfoodだ计 // api 5
 	@JsonProperty("searchnumber")
-	public int searchnumber;//砞﹚琩高戈掸计 // api 3
-	@JsonProperty("searchpoint")//ss
-	public double searchpoint;//ノだ计тStore戈 // api 4 蛤 5
+	private int searchnumber; // 砞﹚琩高戈掸计 // api 3
+	@JsonProperty("searchpoint")
+	private double searchpoint; // ノだ计тStore戈 // api 4 蛤 5
+
 	public String getStore_id() {
 		return store_id;
 	}
@@ -41,12 +42,11 @@ public class StoreReq {
 		this.food = food;
 	}
 
-	
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 
@@ -73,8 +73,5 @@ public class StoreReq {
 	public void setSearchpoint(double searchpoint) {
 		this.searchpoint = searchpoint;
 	}
-
-	
-	
 
 }

@@ -10,72 +10,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class StoreRes {
-	@JsonProperty("StoreFood_info")
-	public Food foodentity;
-	public Store store;
-	public String store_id;
-	public String city;
-	public String food;
-	public Integer price;
-	public Double point; 
-	public String message; 
-	public List<String> list; // api 4 and 5
+	@JsonProperty("StoreFood_Info") //顯示給人看ㄉ
+	private Food foodentity;
+	@JsonProperty("Store_Info")
+	private Store store;
+	private String error; //錯誤code
+	private String message; //message
+	private List<String> list; // api 4 and 5
 	
-	
+
 
 
 	public StoreRes() {
 	}
-//	public StoreRes(Store store,String message) {
-//		this.store = store;
-//		this.message = message;
-//	}
+	public StoreRes(Store store,String message) {
+		this.store = store;
+		this.message = message;
+	}
 
 	public StoreRes(Food foodentity, String message) {
 		this.foodentity = foodentity;
 		this.message = message;
 	}
-
-	public String getStore_id() {
-		return store_id;
-	}
-
-	public void setStore_id(String store_id) {
-		this.store_id = store_id;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getFood() {
-		return food;
-	}
-
-	public void setFood(String food) {
-		this.food = food;
-	}
-
-	public Integer getPrice() {
-		return price;
-	}
-
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
-
-	public Double getPoint() {
-		return point;
-	}
-
-	public void setPoint(Double point) {
-		this.point = point;
-	}
-
 	public Food getFoodentity() {
 		return foodentity;
 	}
@@ -88,7 +44,8 @@ public class StoreRes {
 		return message;
 	}
 
-	public void setMessage(String message) {
+	public void setMessage(String code,String message) {
+		this.error=code;
 		this.message = message;
 	}
 
@@ -107,9 +64,61 @@ public class StoreRes {
 	public void setStore(Store store) {
 		this.store = store;
 	}
+	public String getError() {
+		return error;
+	}
+	public void setError(String error) {
+		this.error = error;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
 	
 
 	
+
+
+//	public String getStore_id() {
+//		return store_id;
+//	}
+//
+//	public void setStore_id(String store_id) {
+//		this.store_id = store_id;
+//	}
+//
+//	public String getCity() {
+//		return city;
+//	}
+//
+//	public void setCity(String city) {
+//		this.city = city;
+//	}
+//
+//	public String getFood() {
+//		return food;
+//	}
+//
+//	public void setFood(String food) {
+//		this.food = food;
+//	}
+//
+//	public Integer getPrice() {
+//		return price;
+//	}
+//
+//	public void setPrice(Integer price) {
+//		this.price = price;
+//	}
+//
+//	public Double getPoint() {
+//		return point;
+//	}
+//
+//	public void setPoint(Double point) {
+//		this.point = point;
+//	}
+
 
 
 	

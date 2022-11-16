@@ -5,6 +5,7 @@ import java.util.Objects;
 
 @SuppressWarnings("serial")
 public class FoodId implements Serializable {
+	// 作為複合主鍵的類別，必須實作Serializable介面
 	private String storeId;
 	private String foodId;
 

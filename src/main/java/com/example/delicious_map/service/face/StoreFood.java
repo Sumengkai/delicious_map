@@ -7,28 +7,28 @@ import java.util.UUID;
 
 import com.example.delicious_map.entity.Food;
 import com.example.delicious_map.entity.Store;
+import com.example.delicious_map.vo.StoreFoodRes;
 import com.example.delicious_map.vo.StoreRes;
 
 public interface StoreFood {
-	//------------------------------------------------------1
-	// 針對store新增.修改
-	public StoreRes AddAndUpdateStore(String id, String city);
 
-//------------------------------------------------------2
+	// 針對<店家>新增.修改
+	public StoreRes addAndUpdateStore(String id, String city);
 
-	// food新增修改並且存進store的評價
-	public Food AddAndUpdateFood(String store, String food, int price, double point);
 
-//------------------------------------------------------3
-	// 藉由城市找出店家以及相對應的餐點... 搜尋筆數
-	public List<String> SearchByCity(String city, int num);
+	// <餐點>新增.修改並且存進 <店家> 的評價
+	public StoreRes addAndUpdateFood(String store, String food, Integer price, double point);
 
-// ------------------------------------------------------4
+
+	// 藉由<城市>找出<店家>以及相對應的<餐點>... <並且可以限制搜尋筆數>
+	public List<String> searchByCityAndLimit(String city, int limitNumber);
+
+
 	// 藉由評價找出店家以及相對應的資訊... 搜尋評價 //並且要排序
-	public List<String> SearchStorePoint(double point);
+	public List<String> searchStorePoint(double point);
 
-//-------------------------------------------------------5
-	//藉由店家評價找出店家and藉由菜單評價找出菜單 //並且兩個都要排序
-	public List<String> SearchStorePointAndFoodPoint(double storepoint, double foodpoint);
+
+	// 藉由<店家評價>找出<店家>藉由<菜單評價>找出<菜單> //並且兩個都要排序
+	public List<String> searchStorePointAndFoodPoint(double storepoint, double foodpoint);
 
 }
