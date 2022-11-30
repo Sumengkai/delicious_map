@@ -1,7 +1,8 @@
 package com.example.delicious_map.vo;
 
 import java.util.List;
-
+import java.util.Map;
+import java.util.Set;
 
 import com.example.delicious_map.entity.Food;
 import com.example.delicious_map.entity.Store;
@@ -10,47 +11,41 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class StoreRes {
-	@JsonProperty("StoreFood_Info") //顯示給人看ㄉ
-	private Food foodentity;
+	@JsonProperty("StoreFood_Info") // 顯示給人看的
+	private Food food;
 	@JsonProperty("Store_Info")
 	private Store store;
-	private String error; //錯誤code
-	private String message; //message
-	private List<String> list; // api 4 and 5
-	
-
-
+	private String errorCode; // 錯誤code
+	private String message; // message
+	private List<String> list; // api 4 and 5(沒用ㄌ)
+	private List<StoreFoodVo> voList; // api 3 4 5
+	private Set<StoreFoodVo> treeSet;
 
 	public StoreRes() {
 	}
-	public StoreRes(Store store,String message) {
+
+	public StoreRes(Store store, String message) {
 		this.store = store;
 		this.message = message;
 	}
 
-	public StoreRes(Food foodentity, String message) {
-		this.foodentity = foodentity;
+	public StoreRes(Food food, String message) {
+		this.food = food;
 		this.message = message;
-	}
-	public Food getFoodentity() {
-		return foodentity;
-	}
-
-	public void setFoodentity(Food foodentity) {
-		this.foodentity = foodentity;
 	}
 
 	public String getMessage() {
 		return message;
 	}
 
-	public void setMessage(String code,String message) {
-		this.error=code;
+	public void setMessage(String code, String message) {
+		this.errorCode = code;
 		this.message = message;
 	}
 
 	public List<String> getList() {
 		return list;
+		
 	}
 
 	public void setList(List<String> list) {
@@ -60,67 +55,48 @@ public class StoreRes {
 	public Store getStore() {
 		return store;
 	}
+	
+
+	public Food getFood() {
+		return food;
+	}
+
+	public void setFood(Food food) {
+		this.food = food;
+	}
 
 	public void setStore(Store store) {
 		this.store = store;
 	}
-	public String getError() {
-		return error;
+
+	public String getErrorCode() {
+		return errorCode;
 	}
-	public void setError(String error) {
-		this.error = error;
+
+	public void setErrorCode(String error) {
+		this.errorCode = error;
 	}
 
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
 
-	
+	public List<StoreFoodVo> getVoList() {
+		return voList;
+	}
 
+	public void setVoList(List<StoreFoodVo> voList) {
+		this.voList = voList;
+	}
+	//-
 
-//	public String getStore_id() {
-//		return store_id;
-//	}
-//
-//	public void setStore_id(String store_id) {
-//		this.store_id = store_id;
-//	}
-//
-//	public String getCity() {
-//		return city;
-//	}
-//
-//	public void setCity(String city) {
-//		this.city = city;
-//	}
-//
-//	public String getFood() {
-//		return food;
-//	}
-//
-//	public void setFood(String food) {
-//		this.food = food;
-//	}
-//
-//	public Integer getPrice() {
-//		return price;
-//	}
-//
-//	public void setPrice(Integer price) {
-//		this.price = price;
-//	}
-//
-//	public Double getPoint() {
-//		return point;
-//	}
-//
-//	public void setPoint(Double point) {
-//		this.point = point;
-//	}
+	public Set<StoreFoodVo> getTreeSet() {
+		return treeSet;
+	}
 
-
-
+	public void setTreeSet(Set<StoreFoodVo> treeSet) {
+		this.treeSet = treeSet;
+	}
 	
 
 }

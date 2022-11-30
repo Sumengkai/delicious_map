@@ -15,5 +15,7 @@ public interface StoreDao extends JpaRepository<Store,String>{
 	public List<Store> findByCity(String city); 
 	//找出大於店家分數的資料並且遞減<高到低> api 4 5
 	public List<Store> findByPointGreaterThanEqualOrderByPointDesc(double point);
+	//---
+	
 
 }

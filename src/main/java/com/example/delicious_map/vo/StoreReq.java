@@ -3,27 +3,27 @@ package com.example.delicious_map.vo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class StoreReq {
-	@JsonProperty("store")
-	private String store_id; // KEY ノㄓтStoreId 
-	@JsonProperty("city")
-	private String city; // тStoreCity
-	@JsonProperty("food")
-	private String food; // тfood繺翴珇兜
-	@JsonProperty("price")
-	private Integer price; // тfood基
-	@JsonProperty("foodpoint")
-	private double foodpoint; // тfoodだ计 // api 5
-	@JsonProperty("searchnumber")
-	private int searchnumber; // 砞﹚琩高戈掸计 // api 3
-	@JsonProperty("searchpoint")
-	private double searchpoint; // ノだ计тStore戈 // api 4 蛤 5
 
-	public String getStore_id() {
-		return store_id;
+	private String storeId; // KEY ノㄓтStoreId
+
+	private String city; // тStoreCity
+
+	private String foodName; // тfood繺翴珇兜
+
+	private Integer price; // тfood基
+
+	private double foodPoint; // тfoodだ计 // api 5
+
+	private int limitNumber; // 砞﹚琩高戈掸计 // api 3
+
+	private double searchPoint; // ノだ计тStore戈 // api 4 蛤 5
+
+	public String getStoreId() {
+		return storeId;
 	}
 
-	public void setStore_id(String store_id) {
-		this.store_id = store_id;
+	public void setStoreId(String storeId) {
+		this.storeId = storeId;
 	}
 
 	public String getCity() {
@@ -34,12 +34,12 @@ public class StoreReq {
 		this.city = city;
 	}
 
-	public String getFood() {
-		return food;
+	public String getFoodName() {
+		return foodName;
 	}
 
-	public void setFood(String food) {
-		this.food = food;
+	public void setFoodName(String foodName) {
+		this.foodName = foodName;
 	}
 
 	public Integer getPrice() {
@@ -50,28 +50,28 @@ public class StoreReq {
 		this.price = price;
 	}
 
-	public double getFoodpoint() {
-		return foodpoint;
+	public double getFoodPoint() {
+		return foodPoint;
 	}
 
-	public void setFoodpoint(double foodpoint) {
-		this.foodpoint = foodpoint;
+	public void setFoodPoint(double foodPoint) {
+		this.foodPoint = foodPoint;
 	}
 
-	public int getSearchnumber() {
-		return searchnumber;
+	public int getLimitNumber() {
+		return limitNumber;
 	}
 
-	public void setSearchnumber(int searchnumber) {
-		this.searchnumber = searchnumber;
+	public void setLimitNumber(int limitNumber) {
+		this.limitNumber = limitNumber;
 	}
 
-	public double getSearchpoint() {
-		return searchpoint;
+	public double getSearchPoint() {
+		return searchPoint;
 	}
 
-	public void setSearchpoint(double searchpoint) {
-		this.searchpoint = searchpoint;
+	public void setSearchPoint(double searchPoint) {
+		this.searchPoint = searchPoint;
 	}
 
 }

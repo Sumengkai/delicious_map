@@ -12,25 +12,25 @@ public class FoodId implements Serializable {
 	public FoodId() {
 	}
 
-	public FoodId(String storeid, String foodid) {
-		this.foodId = foodid;
-		this.storeId = storeid;
+	public FoodId(String storeId, String foodId) {
+		this.foodId = foodId;
+		this.storeId = storeId;
 	}
 
 	public String getStoreid() {
 		return storeId;
 	}
 
-	public void setStoreid(String storeid) {
-		this.storeId = storeid;
+	public void setStoreid(String storeId) {
+		this.storeId = storeId;
 	}
 
 	public String getFoodid() {
 		return foodId;
 	}
 
-	public void setFoodid(String foodid) {
-		this.foodId = foodid;
+	public void setFoodid(String foodId) {
+		this.foodId = foodId;
 	}
 
 }
