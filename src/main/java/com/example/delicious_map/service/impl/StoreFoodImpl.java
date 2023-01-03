@@ -270,7 +270,7 @@ public class StoreFoodImpl implements StoreFood {
 	// =========4.藉由評價搜尋到店家等資訊,並且排序 - API 4
 
 //	@Override
-//	public List<String> searchStorePoint(double point) {
+//	public List<String> searchStorePoint2(double point) {
 //		// 不合資格的數字直接擋掉,避免進入資料庫
 //		if (point < 1 || point > 5) {
 //			return null;

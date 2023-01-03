@@ -25,7 +25,7 @@ public interface StoreFood {
 
 
 	// 藉由評價找出店家以及相對應的資訊... 搜尋評價 //並且要排序
-//	public List<String> searchStorePoint(double point);
+//	public List<String> searchStorePoint2(double point);
 	
 	// 藉由<店家評價>找出<店家> (第二版本)
 	public StoreRes searchStorePoint(double point);

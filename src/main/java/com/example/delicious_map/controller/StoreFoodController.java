@@ -66,10 +66,10 @@ public class StoreFoodController {
 
 	}
 	// --------------------------------------------------------------4.
-//	@PostMapping(value = "/api/searchStorePoint")
-//	public StoreRes searchStorePoint(@RequestBody StoreReq req) {
+//	@PostMapping(value = "/api/searchStorePoint2")
+//	public StoreRes searchStorePoint2(@RequestBody StoreReq req) {
 //		StoreRes res = new StoreRes();
-//		List<String> reslist = storeFood.searchStorePoint(req.getSearchpoint());
+//		List<String> reslist = storeFood.searchStorePoint2(req.getSearchPoint());
 //		if (reslist == null) {
 //			res.setMessage(StoreFood_RtnCode.CANT_FIND_STORELIST_OR_FOODLIST.getCode(),
 //					StoreFood_RtnCode.CANT_FIND_STORELIST_OR_FOODLIST.getMessage());
